@@ -36,7 +36,6 @@ CREATE TABLE teach_stud(
     FOREIGN KEY (Stud_id) REFERENCES student(stud_id),
     FOREIGN KEY (Teach_id) REFERENCES teacher(teach_id)
 );
-
 # Вивести всіх вчителів, які народилися пізніше ніж 1980 рік.
 SELECT * FROM teacher WHERE date_of_birth>'01-01-1980';
 # 2) Вивести всіх учнів, в яких ім’я НЕ починається на B.
@@ -44,7 +43,7 @@ SELECT * FROM student WHERE NOT name like 'B%';
 # 3) Відсортувати предмети за koef .
 SELECT * FROM subject ORDER BY koef;
 # 4) Вивести всю інформацію про найстаршого вчителя.
-SELECT MAX(date_of_birth) FROM teacher;
+SELECT * FROM teacher WHERE date_of_birth IN ( SELECT MIN(date_of_birth) FROM teacher);
 #  5) Вивести скільки аудиторій є у школі.
 SELECT COUNT(audyt_id) FROM audithory;
 # 6) Вивести загальну кількість місць у всіх аудиторіях в школі.
